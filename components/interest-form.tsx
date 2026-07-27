@@ -1,4 +1,5 @@
-'use client'
+"use client"
+/// <reference types="react" />
 
 import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
