@@ -4,6 +4,7 @@
 import { useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { InquirySchema, interests as allowedInterests } from '@/lib/validation/inquiry'
 
 const interests = [
   'Undergraduate study (future)',
@@ -19,10 +20,50 @@ const labelClasses = 'text-sm font-medium text-foreground'
 
 export function InterestForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    setSubmitted(true)
+    setError(null)
+    if (loading) return
+    const form = event.currentTarget
+    const fd = new FormData(form)
+    const payload = {
+      firstName: String(fd.get('firstName') ?? '').trim(),
+      lastName: String(fd.get('lastName') ?? '').trim(),
+      email: String(fd.get('email') ?? '').trim(),
+      phone: String(fd.get('phone') ?? '').trim() || undefined,
+      interest: String(fd.get('interest') ?? '').trim(),
+      message: String(fd.get('message') ?? '').trim() || undefined,
+    }
+
+    // Client-side validation
+    const parsed = InquirySchema.safeParse(payload)
+    if (!parsed.success) {
+      setError(parsed.error.issues.map((issue: any) => issue.message).join('\n'))
+      return
+    }
+
+    setLoading(true)
+    try {
+      const res = await fetch('/api/inquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(parsed.data),
+      })
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}))
+        setError(body?.error || 'Submission failed')
+        return
+      }
+      setSubmitted(true)
+      form.reset()
+    } catch (e) {
+      setError('Network error')
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -157,11 +198,13 @@ export function InterestForm() {
         university is a proposed institution under development.
       </p>
 
+      {error && <div className="text-sm text-destructive">{error}</div>}
       <button
         type="submit"
-        className="inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-6 text-sm font-medium tracking-wide text-primary-foreground transition-colors outline-none hover:bg-primary-deep focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto"
+        disabled={loading}
+        className="inline-flex h-11 w-full items-center justify-center rounded-md bg-primary px-6 text-sm font-medium tracking-wide text-primary-foreground transition-colors outline-none hover:bg-primary-deep focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-auto disabled:opacity-50"
       >
-        Register Interest
+        {loading ? 'Submitting…' : 'Register Interest'}
       </button>
     </form>
   )

@@ -45,7 +45,7 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-3 lg:flex">
           <ActionLink href="/admissions" size="sm" variant="primary">
-            Register Interest
+            Explore Admissions
           </ActionLink>
         </div>
 
@@ -100,7 +100,7 @@ export function SiteHeader() {
               className="mt-2"
               onClick={() => setOpen(false)}
             >
-              Register Interest
+              Explore Admissions
             </ActionLink>
           </nav>
         </div>
