@@ -46,3 +46,8 @@ export { Prisma }
  * 
  */
 export type Inquiry = Prisma.InquiryModel
+/**
+ * Model Application
+ * 
+ */
+export type Application = Prisma.ApplicationModel

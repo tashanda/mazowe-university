@@ -44,8 +44,8 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <ActionLink href="/admissions" size="sm" variant="primary">
-            Explore Admissions
+          <ActionLink href="/apply" size="sm" variant="primary">
+            Apply Now
           </ActionLink>
         </div>
 
@@ -95,12 +95,12 @@ export function SiteHeader() {
               )
             })}
             <ActionLink
-              href="/admissions"
+              href="/apply"
               variant="primary"
               className="mt-2"
               onClick={() => setOpen(false)}
             >
-              Explore Admissions
+              Apply Now
             </ActionLink>
           </nav>
         </div>

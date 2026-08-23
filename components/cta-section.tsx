@@ -7,7 +7,7 @@ type CtaSectionProps = {
 
 export function CtaSection({
   title = 'Be part of a university in the making',
-  description = 'Mazowe University is currently under development. Prospective students, partners, and researchers are invited to register interest and help shape what comes next.',
+  description = 'Applications are open for the intended August 2027 intake. Explore the available programs and submit your formal application online.',
 }: CtaSectionProps) {
   return (
     <section className="bg-background">
@@ -22,8 +22,8 @@ export function CtaSection({
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
-            <ActionLink href="/admissions" variant="primary">
-              Register Interest
+            <ActionLink href="/apply" variant="primary">
+              Apply Now
             </ActionLink>
             <ActionLink href="/contact" variant="outline">
               Contact the Team

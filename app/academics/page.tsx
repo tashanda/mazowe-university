@@ -165,8 +165,8 @@ export default function AcademicsPage() {
       </Section>
 
       <CtaSection
-        title="Interested in a future program?"
-        description="Program details, entry requirements, and start dates are still being developed. Register your interest to receive updates as academic plans progress."
+        title="Ready to apply?"
+        description="Formal applications are open for the intended August 2027 intake across the programs listed above."
       />
     </>
   )

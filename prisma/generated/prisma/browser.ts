@@ -22,3 +22,8 @@ export * from './enums';
  * 
  */
 export type Inquiry = Prisma.InquiryModel
+/**
+ * Model Application
+ * 
+ */
+export type Application = Prisma.ApplicationModel

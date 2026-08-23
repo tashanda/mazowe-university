@@ -17,3 +17,29 @@ export const InquiryStatus = {
 } as const
 
 export type InquiryStatus = (typeof InquiryStatus)[keyof typeof InquiryStatus]
+
+
+export const ApplicationStatus = {
+  SUBMITTED: 'SUBMITTED',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  MORE_INFORMATION_REQUIRED: 'MORE_INFORMATION_REQUIRED',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type ApplicationStatus = (typeof ApplicationStatus)[keyof typeof ApplicationStatus]
+
+
+export const StudyLevel = {
+  ASSOCIATE: 'ASSOCIATE',
+  BACHELORS: 'BACHELORS'
+} as const
+
+export type StudyLevel = (typeof StudyLevel)[keyof typeof StudyLevel]
+
+
+export const IntendedIntake = {
+  AUGUST_2027: 'AUGUST_2027'
+} as const
+
+export type IntendedIntake = (typeof IntendedIntake)[keyof typeof IntendedIntake]

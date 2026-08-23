@@ -51,11 +51,11 @@ export function HomeHero() {
               <ArrowRight className="size-4" aria-hidden="true" />
             </ActionLink>
             <ActionLink
-              href="/admissions"
+                href="/apply"
               variant="outline-inverted"
               size="lg"
             >
-              Register Interest
+                Apply Now
             </ActionLink>
           </div>
         </div>

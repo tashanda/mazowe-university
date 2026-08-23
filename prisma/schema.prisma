@@ -14,6 +14,23 @@ enum InquiryStatus {
   CLOSED
 }
 
+enum ApplicationStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  MORE_INFORMATION_REQUIRED
+  ACCEPTED
+  REJECTED
+}
+
+enum StudyLevel {
+  ASSOCIATE
+  BACHELORS
+}
+
+enum IntendedIntake {
+  AUGUST_2027
+}
+
 model Inquiry {
   id        String        @id @default(cuid())
   firstName String
@@ -25,4 +42,29 @@ model Inquiry {
   status    InquiryStatus @default(NEW)
   createdAt DateTime      @default(now())
   updatedAt DateTime      @updatedAt
+}
+
+model Application {
+  id                String            @id @default(cuid())
+  status            ApplicationStatus @default(SUBMITTED)
+  firstName         String
+  lastName          String
+  dateOfBirth       DateTime
+  nationality       String
+  email             String
+  phone             String
+  address           String
+  program           String
+  studyLevel        StudyLevel
+  intendedIntake    IntendedIntake
+  previousSchool    String
+  qualification     String
+  completionYear    Int
+  academicResults   String
+  activities        String?
+  testScores        String?
+  personalStatement String?
+  confirmedAccuracy Boolean
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
 }
