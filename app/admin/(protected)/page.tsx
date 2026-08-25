@@ -17,16 +17,20 @@ export default function AdminPage() {
         </form>
       </div>
 
-      <section className="py-10">
-        <h2 className="text-xl font-semibold">Administration area</h2>
-        <p className="mt-2 text-muted-foreground">Review submissions received through the public interest form.</p>
-        <Link
-          href="/admin/inquiries"
-          className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          View inquiries
-        </Link>
+      <section className="grid gap-5 py-10 sm:grid-cols-2">
+        <AdminDestination title="Applications" description="Search and review formal admissions applications." href="/admin/applications" label="View applications" />
+        <AdminDestination title="Inquiries" description="Review submissions received through the public interest form." href="/admin/inquiries" label="View inquiries" />
       </section>
     </main>
+  )
+}
+
+function AdminDestination({ title, description, href, label }: { title: string; description: string; href: string; label: string }) {
+  return (
+    <article className="rounded-xl border border-border bg-card p-6">
+      <h2 className="text-xl font-semibold">{title}</h2>
+      <p className="mt-2 text-sm text-muted-foreground">{description}</p>
+      <Link href={href} className="mt-6 inline-flex h-11 items-center justify-center rounded-md bg-primary px-5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">{label}</Link>
+    </article>
   )
 }

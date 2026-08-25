@@ -29,3 +29,19 @@ export const intendedIntakes = ['AUGUST_2027'] as const
 export const intendedIntakeLabels = {
   AUGUST_2027: 'August 2027',
 } as const
+
+export const applicationStatuses = [
+  'SUBMITTED',
+  'UNDER_REVIEW',
+  'MORE_INFORMATION_REQUIRED',
+  'ACCEPTED',
+  'REJECTED',
+] as const
+
+export const applicationStatusLabels = {
+  SUBMITTED: 'Submitted',
+  UNDER_REVIEW: 'Under review',
+  MORE_INFORMATION_REQUIRED: 'More information required',
+  ACCEPTED: 'Accepted',
+  REJECTED: 'Rejected',
+} as const
