@@ -51,7 +51,8 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Inquiry: 'Inquiry'
+  Inquiry: 'Inquiry',
+  Application: 'Application'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -84,6 +85,34 @@ export const InquiryScalarFieldEnum = {
 } as const
 
 export type InquiryScalarFieldEnum = (typeof InquiryScalarFieldEnum)[keyof typeof InquiryScalarFieldEnum]
+
+
+export const ApplicationScalarFieldEnum = {
+  id: 'id',
+  status: 'status',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  dateOfBirth: 'dateOfBirth',
+  nationality: 'nationality',
+  email: 'email',
+  phone: 'phone',
+  address: 'address',
+  program: 'program',
+  studyLevel: 'studyLevel',
+  intendedIntake: 'intendedIntake',
+  previousSchool: 'previousSchool',
+  qualification: 'qualification',
+  completionYear: 'completionYear',
+  academicResults: 'academicResults',
+  activities: 'activities',
+  testScores: 'testScores',
+  personalStatement: 'personalStatement',
+  confirmedAccuracy: 'confirmedAccuracy',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ApplicationScalarFieldEnum = (typeof ApplicationScalarFieldEnum)[keyof typeof ApplicationScalarFieldEnum]
 
 
 export const SortOrder = {
